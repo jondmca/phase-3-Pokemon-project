@@ -2,13 +2,13 @@
 puts "🌱 Seeding Pokemon..."
 
 # Makes Trainers
-2.times do
+5.times do
     Trainer.create(name: Faker::Name.name)
 end
 
-2.times do 
+5.times do 
     i = 1
-    pokemon_ids = Array.new(6) { rand(1..925) }
+    pokemon_ids = Array.new(6) { rand(1..905) }
 
     pokemon_ids.each do |pokemon_id|
         response = RestClient.get "https://pokeapi.co/api/v2/pokemon/#{pokemon_id}/"
