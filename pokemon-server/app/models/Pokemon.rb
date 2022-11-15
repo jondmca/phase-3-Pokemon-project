@@ -1,3 +1,3 @@
 class Pokemon < ActiveRecord::Base
-    has_many :trainers
+    belongs_to :trainer
 end

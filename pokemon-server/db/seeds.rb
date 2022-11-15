@@ -7,7 +7,7 @@ puts "🌱 Seeding Pokemon..."
 end
 
 5.times do 
-    i = 1
+    |i|
     pokemon_ids = Array.new(6) { rand(1..905) }
 
     pokemon_ids.each do |pokemon_id|
@@ -24,10 +24,11 @@ end
             first_type: pokemon_id_hash["types"][0]["type"]["name"],
             second_type: "N/A",
             # end
-            sprite: pokemon_id_hash["sprites"]["other"]["official-artwork"]["front_default"]
-            
+            sprite: pokemon_id_hash["sprites"]["other"]["official-artwork"]["front_default"],
+            trainer_id: i + 1
             )
-        end
+    end
+
 end
 
 puts "✅ Done seeding!"
