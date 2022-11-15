@@ -3,7 +3,18 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   get "/" do
-    { message: "Good luck with your project!" }.to_json
+    "🌱 Seeded Data Instructions: 🌱
+
+    trainer IDs = 1 through 5
+    pokemon IDs = 1 through 30
+
+    /pokemon = Shows a list of all randomized Pokemon.
+    /trainers = Shows a list of all trainers.
+    /trainers/:id = Shows an individual trainer and their Pokemon.
+    /trainers_pokemon = Shows all trainers and their Pokemon.
+    /trainers_pokemon/:id = Shows a specific trainer and their Pokemon details.
+    /pokemon/:id = Shows an individual Pokemon, their details and their respective trainer.
+    "
   end
 
   get "/pokemon" do
@@ -41,7 +52,9 @@ class ApplicationController < Sinatra::Base
 
   get "/pokemon/:id" do
     pokemon = Pokemon.find(params[:id])
-    pokemon.to_json
+    pokemon.to_json(include: {
+      trainer: {only: [:name]}
+    })
   end
 
   delete "/pokemon/:id" do
